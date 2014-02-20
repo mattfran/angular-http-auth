@@ -46,7 +46,6 @@
     $httpProvider.interceptors.push(['$rootScope', '$q', 'httpBuffer', function($rootScope, $q, httpBuffer) {
       return {
         responseError: function(rejection) {
-          console.log('HTTP REJECTION: ', rejection);
           if (rejection.status === 401 && !rejection.config.ignoreAuthModule) {
             var deferred = $q.defer();
             httpBuffer.append(rejection.config, deferred);
